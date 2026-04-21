@@ -144,3 +144,57 @@ button:hover {
     background: #1f5a3a;
     color: #c7ecd8;
 }
+
+#Forma_CV {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+#Forma_CV input,
+#Forma_CV textarea {
+    background: #c7ecd8;
+    color: #153d27;
+    border: 2px solid #153d27;
+    border-radius: 14px;
+    padding: 8px 12px;
+    font-size: 15px;
+    font-family: "Trebuchet MS","Verdana",sans-serif;
+    outline: none;
+}
+
+#Forma_CV textarea {
+    min-width: 180px;
+    min-height: 40px;
+    resize: none;
+}
+
+#Forma_CV input:focus,
+#Forma_CV textarea:focus {
+    background: #e4f6ec;
+}
+
+#Forma_CV button {
+    background: #153d27;
+    color: #8cd9ae;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-family: "Trebuchet MS","Verdana",sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#Forma_CV button:hover {
+    background: #1f5a3a;
+    color: #c7ecd8;
+}
+
+#ErrorProvider {
+    margin-top: 10px;
+    font-size: 15px;
+}

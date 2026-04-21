@@ -31,3 +31,49 @@ btnUkryc.addEventListener('click', () => {
 }
 );
 
+// dla zadania 5
+// deklaracja const dla formularza
+const formaCV = document.getElementById('Forma_CV');
+const imie = document.getElementById('Imie');
+const nazwisko = document.getElementById('Nazwisko');
+const email = document.getElementById('Email');
+const wiadomosc = document.getElementById('Wiadomosc');
+const errorProvider = document.getElementById('ErrorProvider');
+
+// event submit dla formularza
+formaCV.addEventListener('submit', (e) => {
+    e.preventDefault(); // blokada przeładowania strony
+
+    // pobranie wartości
+    let imieVal = imie.value.trim();
+    let nazwiskoVal = nazwisko.value.trim();
+    let emailVal = email.value.trim();
+    let wiadomoscVal = wiadomosc.value.trim();
+
+    // czyszczenie komunikatu
+    errorProvider.textContent = '';
+    errorProvider.style.color = 'red';
+
+    // sprawdzenie czy pola są puste
+    if (imieVal === '' || nazwiskoVal === '' || emailVal === '' || wiadomoscVal === '') {
+        errorProvider.textContent = 'Wypełnij wszystkie pola';
+        return;
+    }
+
+    // sprawdzenie cyfr w imieniu i nazwisku
+    if (/\d/.test(imieVal) || /\d/.test(nazwiskoVal)) {
+        errorProvider.textContent = 'Imię i nazwisko nie mogą zawierać cyfr';
+        return;
+    }
+
+    // sprawdzenie emaila (proste)
+    if (!emailVal.includes('@') || !emailVal.includes('.')) {
+        errorProvider.textContent = 'Niepoprawny email';
+        return;
+    }
+
+    // jeśli wszystko ok
+    errorProvider.style.color = 'green';
+    errorProvider.textContent = 'Formularz poprawny';
+});
+
