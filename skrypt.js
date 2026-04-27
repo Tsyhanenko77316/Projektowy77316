@@ -77,3 +77,34 @@ formaCV.addEventListener('submit', (e) => {
     errorProvider.textContent = 'Formularz poprawny';
 });
 
+// dla zadania 6
+// pobranie danych z pliku json
+fetch('dane.json')
+    .then(response => response.json())
+    .then(data => {
+        // deklaracja const dla list
+        const listaUmiejetnosci = document.getElementById('Lista_Umiejetnosci');
+        const listaProjektyCSharp = document.getElementById('Lista_Projekty_CSharp');
+        const listaProjektySQL = document.getElementById('Lista_Projekty_SQL');
+
+        // generowanie listy umiejetnosci
+        data.umiejetnosci.forEach(element => {
+            let li = document.createElement('li');
+            li.textContent = element;
+            listaUmiejetnosci.appendChild(li);
+        });
+
+        // generowanie listy projektow C#
+        data.projektyCSharp.forEach(element => {
+            let li = document.createElement('li');
+            li.textContent = element;
+            listaProjektyCSharp.appendChild(li);
+        });
+
+        // generowanie listy projektow SQL
+        data.projektySQL.forEach(element => {
+            let li = document.createElement('li');
+            li.textContent = element;
+            listaProjektySQL.appendChild(li);
+        });
+    });
