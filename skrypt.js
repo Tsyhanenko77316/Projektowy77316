@@ -108,3 +108,46 @@ fetch('dane.json')
             listaProjektySQL.appendChild(li);
         });
     });
+// dla zadania 7
+const inputNotatka = document.getElementById('Input_Notatka');
+const btnDodajNotatke = document.getElementById('Btn_Dodaj_Notatke');
+const listaNotatek = document.getElementById('Lista_Notatek');
+
+let notatki = JSON.parse(localStorage.getItem('notatki')) || [];
+
+function pokazNotatki() {
+    listaNotatek.innerHTML = '';
+
+    notatki.forEach((element, index) => {
+        let li = document.createElement('li');
+        li.textContent = element + ' ';
+
+        let btnUsun = document.createElement('button');
+        btnUsun.textContent = 'Usuń';
+        btnUsun.classList.add('btn_usun');
+
+        btnUsun.addEventListener('click', () => {
+            notatki.splice(index, 1);
+            localStorage.setItem('notatki', JSON.stringify(notatki));
+            pokazNotatki();
+        });
+
+        li.appendChild(btnUsun);
+        listaNotatek.appendChild(li);
+    });
+}
+
+btnDodajNotatke.addEventListener('click', () => {
+    let wartoscInput = inputNotatka.value.trim();
+
+    if (wartoscInput === '') {
+        return;
+    }
+
+    notatki.push(wartoscInput);
+    localStorage.setItem('notatki', JSON.stringify(notatki));
+    inputNotatka.value = '';
+    pokazNotatki();
+});
+
+pokazNotatki();

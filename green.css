@@ -198,3 +198,29 @@ button:hover {
     margin-top: 10px;
     font-size: 15px;
 }
+
+#Input_Notatka {
+    background: #c7ecd8;
+    color: #153d27;
+    border: 2px solid #153d27;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-size: 16px;
+    font-family: "Trebuchet MS","Verdana",sans-serif;
+    margin: 10px;
+}
+
+.btn_usun {
+    background: #153d27;
+    color: #8cd9ae;
+    border: none;
+    border-radius: 14px;
+    padding: 6px 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.sec_box,
+#Lista_Notatek {
+    max-width: 900px;
+    margin: 20px auto;
+}
