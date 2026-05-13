@@ -71,10 +71,32 @@ formaCV.addEventListener('submit', (e) => {
         errorProvider.textContent = 'Niepoprawny email';
         return;
     }
-
-    // jeśli wszystko ok
-    errorProvider.style.color = 'green';
-    errorProvider.textContent = 'Formularz poprawny';
+    
+    // zmiana dla 8 zadania
+    const daneFormularza = {
+        imie: imieVal,
+        nazwisko: nazwiskoVal,
+        email: emailVal,
+        wiadomosc: wiadomoscVal
+    }
+    // wysłanie danych
+    fetch('/zapisz', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(daneFormularza)
+    })
+    // odpowiedz serwerza
+    .then(response => response.json())
+    // jeżeli mamy sukses
+    .then(wynik => {
+        // kolor tego suksesu
+        errorProvider.style.color = 'green';
+        // co nam napisze serverz
+        errorProvider.textContent = wynik.message;
+    })
+    
 });
 
 // dla zadania 6
